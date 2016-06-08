@@ -34,7 +34,7 @@ module.exports = function(robot) {
     yield Promise.delay(500); // wait to connect, get users
     // emit 'ready' event to kick off initialization
     robot.emit('ready')
-  }).catch(global.log.error)
+  }).catch(console.log)
 
   /////////////////////
   // initializations //
