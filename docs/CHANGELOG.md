@@ -3,45 +3,19 @@
 
 ## Roadmap
 
-- User serialization for multi-adapters (very soon)
+- lower the complexity of neo4jkb, make lightweight and easier to use
+- user serialization and identity linking for omnipresence
 - customMessage and customFormat for each adapter (very soon)
-
-### notes to self
-- omnipresence - make all adapters run at once, connecting to the same brain, sharing the same source code. Need user serialization. Don't sync chatlog since it's impossible. Just like you're talking to the same person on different platforms. Server: don't restart for different runtimes, only new clients join. Better user serialization scheme, e.g. append with `<adapter>.<field>`. Then have a core set of identifying details: email, phone, id, name
-- better menu format inspired by lita
-- fix external dep: data/ models/ none to load when first installed. use npm to distribute models
-- old things: help menu; geocoding, time, weather; reminder, todo, google search, chatbot?
-- KB fallback: 3,2,1, if local fail, fallback to conceptnet, if still fail, fallback to google the most generic
-- ConceptNet parse into nodes and edges for query
-- ConceptNet getURI prechain to 3 methods
-- ConceptNet KB answer simple or existing sample text or graph language
-- generalize customMessage parser. unify @customMessage on adapters? then a centralized generator to parse into format according to current adapter.
-- platforms unification is simply by spawning one instance for each adapter, while all sharing the same brain and capability. Specification by having a resolving "send attachment" buttons for Slack attachments, fb template, Telegram buttons etc. Whereas all states (memories) shall be user-serialized and preserved in the central brain. This is then like "one brain, many bodies(interfaces)". Def doable. This will need a brain interface to CRUD memories.
-- start first neural net to simple-classify sentence into intents
-- skflow gridsearch hyperparam with spark https://databricks.com/blog/2016/02/08/auto-scaling-scikit-learn-with-spark.html
+- better help menu format for UI
+- 3 layers of KB with fallback mechanism - local then conceptnet then google
 - Attach KB source to answers
-- (delay to last) Google user auth
-- skflow has rnn https://github.com/tensorflow/skflow/tree/master/examples, seq2seq https://github.com/tensorflow/skflow/blob/5db4eb1bde4fd015f21b950df60ea0061c595563/examples/language_model.py https://github.com/tensorflow/skflow/blob/5db4eb1bde4fd015f21b950df60ea0061c595563/examples/neural_translation.py https://github.com/tensorflow/skflow/blob/9ed1a458ecf7483c2695a076b9776f85014d5a65/examples/neural_translation_word.py
-- Ultimate RNN train QnA by seq2seq: https://github.com/farizrahman4u/seq2seq, https://github.com/nicolas-ivanov/tf_seq2seq_chatbot, https://github.com/adamchanson/seq2seq, skdlow has https://github.com/tensorflow/skflow/blob/master/skflow/models.py#L133
 - RNN train intent args parsing
-- KB 3 canonicalization for node and edge keys
-- KB 3 local memory with auto structure and streamlined interface
-- KB 3 self inquiry and learning mechanism
+- KB canonicalization for node and edge keys
+- KB local memory with auto structure and streamlined interface
+- KB self inquiry and learning mechanism
 - functional hash reinsert function with partial args for inquire if incomplete
-- Pretrained RNN model loadning for NPM (any other pretrained model too)
-- Advance: online general learning
-- ohh hello there https://cloud.google.com/products/machine-learning/, https://cloud.google.com/ml/
-
-## General Todo
-
-- release the simplest version of AIVA with simpler AI modules (google graph API and conceptnet, imagenet: slack might be able to take picture for bot). Full NLP and KB will take longer to complete.
-- warning if forever restarts
 - store cron in KB for restoration
-- user preference: weather, last food order etc, extensible
-- multi-platform tests: test switching out the adapter to Telegram/IRC, centralize brain recognize the same user across different platforms, and you can seamlessly pick up your bot from any platform - this will be the "one bot to rule it all" as you can find it anywhere and it will know this is the same person.
-- docs on full feature list, so devs know what they can use
-- add back branches:only:master to .travis.yml
-- update package.json name, private, url, license
+
 
 
 ## Changelog
@@ -109,10 +83,5 @@
 - Docker and non-Docker dev is identical - no fragmentation
 - rewrite npm commands and delegate to bash scripts
 - use supervisord, nginx for Docker AIVA
+- stable docker image release, with deepdream branch for AI and system demo
 
-
-# remove docs entire to aivadoc
-doc updates:
-change npm test to be docker-compatible too
-
-# next try to link containers for deep dream.
