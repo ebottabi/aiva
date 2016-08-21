@@ -7,9 +7,6 @@ services:
 before_install:
   - docker pull kengz/aiva
   - npm start
-install:
   - npm test
-matrix:
-  fast_finish: true
 after_script:
   "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
