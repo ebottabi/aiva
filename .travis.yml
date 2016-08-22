@@ -6,7 +6,8 @@ services:
 
 before_install:
   - docker pull kengz/aiva
-  - npm start
+  - docker run -m 4G -it -d -p 4041:4038 -p 7476:7475 -p 6466:6465 --name aiva-development -v `pwd`:/opt/aiva kengz/aiva /bin/bash -c 'NPM_RUN=\"development\" $SHELL'
+  - docker ps -a
   - npm test
 after_script:
   "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
