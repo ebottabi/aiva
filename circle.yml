@@ -1,0 +1,11 @@
+machine:
+  node:
+    version: 6
+  services:
+    - docker
+  COVERALLS_REPO_TOKEN: etDLVZ6U9Q77ilGeLwhNd76OB9JMJdL6d
+
+dependencies:
+  pre:
+    - docker pull kengz/aiva
+    - docker run -m 4G -it -d -p 4041:4038 -p 7476:7475 -p 6466:6465 --name aiva-development -v `pwd`:/opt/aiva kengz/aiva /bin/bash -c 'NPM_RUN=\"development\"'
