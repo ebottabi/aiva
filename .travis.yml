@@ -43,6 +43,13 @@ install:
   - npm install socket.io-client
   - npm install untildify
   - npm install watson-developer-cloud
+  - npm install chai
+  - npm install chai-as-promised
+  - npm install coffee-script
+  - npm install hubot-test-helper
+  - npm install istanbul
+  - npm install mocha
+  - npm install sinon
 script:
   - npm test
 after_script:
