@@ -3,6 +3,7 @@
 # this bash session is for use with supervisord. For new bash sessions to the same container, use enter.sh
 
 # set from .env
+bash bin/copy-env.sh
 eval "$(cat .env | sed 's/^/export /')"
 
 if [[ $CLOUDDREAM_PATH && -d ${HOME}/clouddream ]]; then
