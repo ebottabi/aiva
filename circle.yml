@@ -12,4 +12,4 @@ dependencies:
 
 test:
   override:
-    - docker run -m 4G -it -d -p 4041:4038 -p 7476:7475 -p 6466:6465 --name aiva-development -v `pwd`:/opt/aiva kengz/aiva /bin/bash -c 'cd /opt/aiva && npm test'
+    - docker run -it -d -p 4041:4038 -p 7476:7475 -p 6466:6465 --name aiva-development -v `pwd`:/opt/aiva kengz/aiva /bin/bash -c 'cd /opt/aiva && npm test'
